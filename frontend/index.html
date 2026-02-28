@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Git Diff Analyzer</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCREEN 1 — All 5 agents (exactly one viewport tall)
+════════════════════════════════════════════════════════════════ -->
+<section class="screen agents-screen">
+
+  <!-- Top bar -->
+  <div class="top-bar">
+    <span class="brand">⚙️ Git Diff Analyzer</span>
+    <div class="input-row">
+      <input id="repoUrl" type="text" placeholder="https://github.com/owner/repo" autocomplete="off" />
+      <button id="analyzeBtn">Analyze</button>
+    </div>
+    <span id="statusMsg" class="status"></span>
+  </div>
+
+  <!-- 5-agent grid: 3 on top row, 2 on bottom row -->
+  <div class="agent-grid">
+
+    <div class="agent-card" style="--c:#3498DB">
+      <div class="card-head">
+        <span class="dot"></span>
+        <span class="name">Diff Parser</span>
+        <span class="role">The Organizer</span>
+        <span class="badge" id="badge-0">waiting</span>
+      </div>
+      <div class="msgs" id="msgs-0"><span class="idle">waiting for analysis...</span></div>
+    </div>
+
+    <div class="agent-card" style="--c:#9B59B6">
+      <div class="card-head">
+        <span class="dot"></span>
+        <span class="name">Logic Analyzer</span>
+        <span class="role">The Detective</span>
+        <span class="badge" id="badge-1">waiting</span>
+      </div>
+      <div class="msgs" id="msgs-1"><span class="idle">waiting for analysis...</span></div>
+    </div>
+
+    <div class="agent-card" style="--c:#E67E22">
+      <div class="card-head">
+        <span class="dot"></span>
+        <span class="name">Code Quality</span>
+        <span class="role">The Perfectionist</span>
+        <span class="badge" id="badge-2">waiting</span>
+      </div>
+      <div class="msgs" id="msgs-2"><span class="idle">waiting for analysis...</span></div>
+    </div>
+
+    <div class="agent-card" style="--c:#F1C40F">
+      <div class="card-head">
+        <span class="dot"></span>
+        <span class="name">Performance</span>
+        <span class="role">The Optimizer</span>
+        <span class="badge" id="badge-3">waiting</span>
+      </div>
+      <div class="msgs" id="msgs-3"><span class="idle">waiting for analysis...</span></div>
+    </div>
+
+    <div class="agent-card" style="--c:#2ECC71">
+      <div class="card-head">
+        <span class="dot"></span>
+        <span class="name">Report Writer</span>
+        <span class="role">The Journalist</span>
+        <span class="badge" id="badge-4">waiting</span>
+      </div>
+      <div class="msgs" id="msgs-4"><span class="idle">waiting for analysis...</span></div>
+    </div>
+
+  </div>
+
+  <!-- Scroll hint shown when report is ready -->
+  <div id="scrollHint" class="scroll-hint hidden">↓ Report ready — scroll down</div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCREEN 2 — Full analysis report
+════════════════════════════════════════════════════════════════ -->
+<section class="screen report-screen" id="reportSection">
+  <div class="report-topbar">
+    <h2>📄 Analysis Report</h2>
+    <div class="report-actions">
+      <button id="copyBtn" class="btn-green">Copy Markdown</button>
+      <button id="backBtn" class="btn-ghost">↑ Back to Agents</button>
+    </div>
+  </div>
+  <div id="reportContent" class="report-body"></div>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
